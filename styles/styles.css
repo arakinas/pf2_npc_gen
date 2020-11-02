@@ -1,0 +1,25 @@
+.main{
+display: flex;
+}
+
+.left{
+    flex: 20%;
+    padding-top: 3px;
+}
+.right{
+    flex: 80%;
+    padding-top: 3px;
+    border: 2px;
+}
+.npcType{
+    padding-top: 3px;
+    border: 2px;
+}
+.npcLevel{
+    padding-top: 3px;
+    border: 2px;
+}
+.buttonsArea{
+    padding-top: 3px;
+    border: 2px;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinder 2 NPC Generator</title>    
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>    
+    <div class="top">
+        <label id="topDescription">Pathfinder 2 NPC Generator</label>
+    </div>
+    <div class="main">
+        <div class="left">
+            <div class="npcType">
+                <label id="lblNpcType">NPC Type:</label>
+                <select id="selectNpcType">
+                    <option>Select Type</option>
+                </select>
+            </div>
+            <div class="npcLevel">
+                <label id="lblNpcLevel">NPC Level:</label>
+                <select id="selectNpcLevel">
+                    <option>Select Level</option>
+                </select>                
+            </div>
+            <div class="buttonsArea">
+                <button id="btnGenerateNpc">Generate NPC</button>
+                <button id="btnResetSelections">Reset Selections</button>
+                <button id="btnClearResults">Clear Results</button>
+            </div>
+            
+        </div>
+        <div class="right">
+            <textarea id="textareaResults" rows="20" cols="60"></textarea>
+        </div>
+    </div>
+    <script src="/source/index.js"></script>
+</body>
+</html>
