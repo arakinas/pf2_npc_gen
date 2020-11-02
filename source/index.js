@@ -121,7 +121,7 @@ document
 document.onload = PopulateDropDowns();
 
 function addResultWithLine(textToAdd) {
-  testResultsList.append(textToAdd + "\n");
+  testResultsList.value += (textToAdd + "\n");
 }
 
 class CreateNpc {
