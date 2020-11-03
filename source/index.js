@@ -151,6 +151,7 @@ function LogStats(
       " Charisma:" +
       charisma
   );
+  testResultsList.value += (textToAdd + "\n");
 }
 
 class CreateNpc {
