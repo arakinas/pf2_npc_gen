@@ -67,31 +67,16 @@ function GenerateLevels() {
 
 function ClearResults() {
   testResultsList.value = "";
-  console.log("clear Results clicked");
 }
 
 function GenerateNpc() {
-  console.log("Generate Npc clicked");
-  if (
-    npcTypeSelector.selectedIndex == 0 ||
-    npcLevelSelector.selectedIndex == 0
-  ) {
-    addResultWithLine("Please select a valid type and level");
-    addResultWithLine(
-      "Selected type: " +
-        npcTypeSelector.value +
-        " and level: " +
-        npcLevelSelector.value
-    );
-    return;
-  }
-  let npcClass = npcTypeSelector.value;
+    let npcClass = npcTypeSelector.value;
   let npcLevel = npcLevelSelector.value;
   let npcAncestery = npcAncesterySelector.value;
 
-  if (npcAncesterySelector.selectedIndex < 2) {
-    npcAncestery = "Random";
-  }
+  // if (npcAncesterySelector.selectedIndex < 1) {
+  //   npcAncestery = "Random";
+  // }
 
   let newNpc = new CreateNpc(npcClass, npcLevel, npcAncestery);
 
@@ -119,10 +104,10 @@ function GenerateNpc() {
   console.log(newNpc.npcName + " generated");
 }
 
-function ResetSelections() {
-  console.log("Reset selection clicked");
+function ResetSelections() {  
+  npcTypeSelector.selectedIndex = 0;
   npcLevelSelector.selectedIndex = 0;
-  npcLevelSelector.selectedIndex = 0;
+  npcAncesterySelector.selectedIndex = 0;
 }
 
 document
@@ -166,30 +151,23 @@ function LogStats(
       " Charisma:" +
       charisma
   );
-  //debug total
-  addResultWithLine(
-    "Total stats = " +
-      (strength + dexterity + constitution + intelligence + wisdom + charisma)
-  );
 }
 
 class CreateNpc {
   constructor(npcClass, npcLevel, npcAncestery) {
-    if (npcAncestery == "Random" || npcAncestery == "Select Ancestery") {
+    if (npcAncestery == "Random") {
       let ran = Math.floor(Math.random() * ancesteryTypes.length);
 
       npcAncestery = ancesteryTypes[ran];
-
-      //// Need to add stat adjustments for the ancestry
     }
 
-    if (npcClass == "Random" || npcClass == "Select Type") {
+    if (npcClass == "Random") {
       let ran = Math.floor(Math.random() * ancesteryTypes.length);
 
       npcClass = classTypes[ran];
     }
 
-    if (npcLevel == "Random" || npcLevel == "Select Level") {
+    if (npcLevel == "Random") {
       let levels = GenerateLevels();
       let ran = Math.floor(Math.random() * levels.length);
 
@@ -248,7 +226,6 @@ class CreateNpc {
     this.npcBackGround = npcBackground;
 
     let npcAncesteryStats = GetAncestoryStats(npcAncestery, primaryStat);
-    //[charisma, constitution, dexterity, intelligence, strength, wisdom]
     charisma += npcAncesteryStats[0];
     constitution += npcAncesteryStats[1];
     dexterity += npcAncesteryStats[2];
@@ -339,6 +316,16 @@ class CreateNpc {
       wisdom += 2;
     }
 
+    //Check for stat total for debug purposes
+if((strength + dexterity + constitution + intelligence + wisdom + charisma)!= 78)
+{
+  let fullStats = (strength + dexterity + constitution + intelligence + wisdom + charisma);
+  addResultWithLine(
+    "Stat total is off. Total stats should be 78, but equals: " + fullStats);
+  console.log("Full stats for character:" + fullStats);
+  console.log("Ancestery Stats: " + npcAncesteryStats);
+  console.log("Background: " + npcBackground);
+}
     this.charisma = charisma;
     this.constitution = constitution;
     this.dexterity = dexterity;
@@ -363,6 +350,7 @@ function GetAncestoryStats(npcAncestery, primaryStat) {
   let strength = 0;
   let wisdom = 0;
 
+  //humans not included here, but are accounted for below
   switch (npcAncestery) {
     case "Dwarf":
       constitution += 2;
@@ -431,7 +419,7 @@ function GetAncestoryStats(npcAncestery, primaryStat) {
       constitution -= 2;
       break;
   }
-//setting this before getting the free ability to help track selected boosts
+  //setting this before getting the free ability to help track selected boosts
   let ancesteryStats = [
     charisma,
     constitution,
@@ -441,71 +429,97 @@ function GetAncestoryStats(npcAncestery, primaryStat) {
     wisdom,
   ];
 
+  //humans get two "free" boosts
+  if(npcAncestery=="Human"){ancesteryStats = selectAbilityBoost(ancesteryStats, primaryStat);}
+
   ancesteryStats = selectAbilityBoost(ancesteryStats, primaryStat);
 
-  console.log("ancestry stats: " + ancesteryStats);
   return ancesteryStats;
 }
 
-//selects an ability to boost. Removes items already selected from the options. 
+//selects an ability to boost. Removes items already selected from the options.
 //Prefers primary stat.
-function selectAbilityBoost(npcStats, primaryStat){
- let charisma = npcStats[0];
+function selectAbilityBoost(npcStats, primaryStat) {
+  let charisma = npcStats[0];
   let constitution = npcStats[1];
   let dexterity = npcStats[2];
   let intelligence = npcStats[3];
   let strength = npcStats[4];
   let wisdom = npcStats[5];
 
-let statList = ["Charisma","Constitution","Dexterity","Intelligence","Strength","Wisdom"]
+  let statList = [
+    "Charisma",
+    "Constitution",
+    "Dexterity",
+    "Intelligence",
+    "Strength",
+    "Wisdom",
+  ];
+  
+  if (charisma > 0) {
+    statList.splice(statList.indexOf("Charisma"), 1);
+  }
+  if (constitution > 0) {
+    statList.splice(statList.indexOf("Constitution"), 1);
+  }
+  if (dexterity > 0) {
+    statList.splice(statList.indexOf("Dexterity"), 1);
+  }
+  if (intelligence > 0) {
+    statList.splice(statList.indexOf("Intelligence"), 1);
+  }
+  if (strength > 0) {
+    statList.splice(statList.indexOf("Strength"), 1);
+  }
+  if (wisdom > 0) {
+    statList.splice(statList.indexOf("Wisdom"), 1);
+  }
 
-if(charisma > 0){statList.slice(0,1);}
-if(constitution > 0){statList.slice(0,1);}
-if(dexterity > 0){statList.slice(0,1);}
-if(intelligence > 0){statList.slice(0,1);}
-if(strength > 0){statList.slice(0,1);}
-if(wisdom > 0){statList.slice(0,1);}
+  let primaryIndex = statList.indexOf(primaryStat);
+  let selectedStat = "";
 
-let primaryIndex = statList.indexOf(primaryStat);
+  if (primaryIndex > -1) {
+    selectedStat = statList[primaryIndex];
+  } else {
+    selectedStat = statList[Math.floor(Math.random() * statList.length)];
+  }
 
-let selectedStat = "";
-
-if(primaryIndex > -1){
-  selectedStat = statList[primaryIndex];
-}
-else{
-  selectedStat = statList[Math.floor(Math.random() * statList.length)];
-}
-
-switch(selectedStat){
-  case "Charisma":
-    charisma+=2;
-    break;
-    case "Constitution":
-      constitution+=2;
-    break;
-    case "Dexterity":
-      dexterity+=2;
-    break;
-    case "Intelligence":
-      intelligence+=2;
-    break;
-    case "Strength":
-      strength+=2;
-    break;
-    case "Wisdom":
-      wisdom+=2;
+  switch (selectedStat) {
+    case "Charisma":
+      charisma += 2;
       break;
-}
+    case "Constitution":
+      constitution += 2;
+      break;
+    case "Dexterity":
+      dexterity += 2;
+      break;
+    case "Intelligence":
+      intelligence += 2;
+      break;
+    case "Strength":
+      strength += 2;
+      break;
+    case "Wisdom":
+      wisdom += 2;
+      break;
+  }
 
-let adjustedStats = [
-  charisma,
-  constitution,
-  dexterity,
-  intelligence,
-  strength,
-  wisdom,
-];
+  let adjustedStats = [
+    charisma,
+    constitution,
+    dexterity,
+    intelligence,
+    strength,
+    wisdom,
+  ];
+
+  for(let i =0; i < adjustedStats.length; i++){
+    if(adjustedStats[i] > 2){
+      console.log("Stat chosen twice");
+      console.log(adjustedStats);
+    }
+  }
 
   return adjustedStats;
 }
@@ -556,9 +570,6 @@ function GetBackground(primaryStat) {
 
   let background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
   let firstStatIndex = Math.floor(Math.random());
-
-  console.log("background " + background);
-  console.log("First stat index:" + firstStatIndex);
 
   switch (background) {
     case "Acolyte":
@@ -808,8 +819,6 @@ function GetBackground(primaryStat) {
       break;
   }
 
-  console.log("First Stat: " + firstStat);
-
   if (firstStat != primaryStat) {
     secondStat = primaryStat;
 
@@ -818,8 +827,6 @@ function GetBackground(primaryStat) {
 
     return _background;
   } else {
-    console.log("second stat is not primary");
-
     //Remove the first stat from the list,
     //you cannot select the same stat to raise at the same step twice.
     let secondStatList = [
@@ -832,12 +839,13 @@ function GetBackground(primaryStat) {
     ];
     secondStatList.slice((secondStatList.indexOf(firstStat), 1));
 
-    secondStat = Math.floor(Math.random() * secondStatList.length);
+    secondStat =secondStatList[Math.floor(Math.random() * secondStatList.length)];
 
-    console.log("second stat " + secondStat);
+    let combinedBackground =[background, firstStat, secondStat];
 
     if (background == null || firstStat == null || secondStat == null) {
       console.log("error with background");
+      console.log(combinedBackground);
     }
     if (
       background == undefined ||
@@ -845,13 +853,11 @@ function GetBackground(primaryStat) {
       secondStat == undefined
     ) {
       console.log("error with background");
+      console.log(combinedBackground);
     }
 
-    console.log("Background:" + background);
-    console.log("firstStat: " + firstStat);
-    console.log("secondStat: " + secondStat);
-
-    return [background, firstStat, secondStat];
+    //return [background, firstStat, secondStat];
+    return combinedBackground;
   }
 }
 
