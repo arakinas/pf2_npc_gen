@@ -73,13 +73,45 @@ describe("Character Generator Tests", () => {
     cy.get("#btnGenerateNpc").click();
     cy.get("#textareaResults").should("contain.value", "Intelligence:18");
   });
-  it("Level 1 human leshy has 16 intelligence", () => {
+  it("Level 1 leshy wizard has 16 intelligence", () => {
     cy.visit("/index.html");
     cy.get("#selectNpcType").select("Wizard");
     cy.get("#selectNpcAncestery").select("Leshy");
     cy.get("#selectNpcLevel").select("1");
     cy.get("#btnGenerateNpc").click();
     cy.get("#textareaResults").should("contain.value", "Intelligence:16");
+  });
+  it("Level 5 ratfolk fighter has 18 strength", () => {
+    cy.visit("/index.html");
+    cy.get("#selectNpcType").select("Fighter");
+    cy.get("#selectNpcAncestery").select("Ratfolk");
+    cy.get("#selectNpcLevel").select("5");
+    cy.get("#btnGenerateNpc").click();
+    cy.get("#textareaResults").should("contain.value", "Strength:18");
+  });
+  it("Level 10 ratfolk fighter has 20 strength", () => {
+    cy.visit("/index.html");
+    cy.get("#selectNpcType").select("Fighter");
+    cy.get("#selectNpcAncestery").select("Ratfolk");
+    cy.get("#selectNpcLevel").select("10");
+    cy.get("#btnGenerateNpc").click();
+    cy.get("#textareaResults").should("contain.value", "Strength:20");
+  });
+  it("Level 15 human wizard has 24 intelligence", () => {
+    cy.visit("/index.html");
+    cy.get("#selectNpcType").select("Wizard");
+    cy.get("#selectNpcAncestery").select("Human");
+    cy.get("#selectNpcLevel").select("15");
+    cy.get("#btnGenerateNpc").click();
+    cy.get("#textareaResults").should("contain.value", "Intelligence:24");
+  });
+  it("Level 20 leshy wizard has 24 intelligence", () => {
+    cy.visit("/index.html");
+    cy.get("#selectNpcType").select("Wizard");
+    cy.get("#selectNpcAncestery").select("Leshy");
+    cy.get("#selectNpcLevel").select("20");
+    cy.get("#btnGenerateNpc").click();
+    cy.get("#textareaResults").should("contain.value", "Intelligence:24");
   });
   it("Clicking clear results removes results", () => {
     cy.visit("/index.html");

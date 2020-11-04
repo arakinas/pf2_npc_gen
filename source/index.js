@@ -262,54 +262,15 @@ class CreateNpc {
       );
     }
 
-    //Four free ability boosts, for last step.
-    if (
-      npcClass == "Alchemist" ||
-      npcClass == "Witch" ||
-      npcClass == "Wizard"
-    ) {
-      intelligence += 2;
-      dexterity += 2;
-      constitution += 2;
-      wisdom += 2;
-    } else if (npcClass == "Bard" || npcClass == "Sorcerer") {
-      intelligence += 2;
-      charisma += 2;
-      dexterity += 2;
-      wisdom += 2;
-    } else if (
-      npcClass == "Druid" ||
-      npcClass == "Cleric" ||
-      npcClass == "Oracle"
-    ) {
-      intelligence += 2;
-      charisma += 2;
-      strength += 2;
-      wisdom += 2;
-    } else if (
-      npcClass == "Ranger" ||
-      npcClass == "Swashbuckler" ||
-      npcClass == "Champion"
-    ) {
-      strength += 2;
-      dexterity += 2;
-      charisma += 2;
-      wisdom += 2;
-    } else if (
-      npcClass == "Monk" ||
-      npcClass == "Fighter" ||
-      npcClass == "Barbarian"
-    ) {
-      strength += 2;
-      dexterity += 2;
-      constitution += 2;
-      wisdom += 2;
-    } else if (npcClass == "Investigator" || npcClass == "Rogue") {
-      intelligence += 2;
-      dexterity += 2;
-      strength += 2;
-      wisdom += 2;
-    }
+    //four additional boost stats
+    let additionalBoostStats = getBoostStats(npcClass);
+
+    charisma += additionalBoostStats[0];
+    constitution += additionalBoostStats[1];
+    dexterity += additionalBoostStats[2];
+    intelligence += additionalBoostStats[3];
+    strength += additionalBoostStats[4];
+    wisdom += additionalBoostStats[5];
 
     //Check for stat total for debug purposes
     if (
@@ -325,6 +286,37 @@ class CreateNpc {
       console.log("Ancestery Stats: " + npcAncesteryStats);
       console.log("Background: " + npcBackground);
     }
+
+    //Apply stat boosts every 5 levels
+    for (let i = 1; i <= npcLevel && i < 21; i++) {
+      let remainder = i % 5;
+      if (remainder == 0) {
+        additionalBoostStats = getBoostStats(npcClass);
+
+        charisma += additionalBoostStats[0];
+        constitution += additionalBoostStats[1];
+        dexterity += additionalBoostStats[2];
+        intelligence += additionalBoostStats[3];
+        strength += additionalBoostStats[4];
+        wisdom += additionalBoostStats[5];
+
+        ///Potential bug: Saw two incidents when Cypress ran where the stats were
+        //higher than they should have been. Added this code in for help with debugging
+        //but could not reproduce. Re-ran in Cypress multiple times and
+        //did not see it happen again. leaving for now, until i determine whether
+        //this is resolved.
+        let maximumStat = (18 + (Math.round(npcLevel/5) *2));
+
+        additionalBoostStats.forEach(checkStats);
+        function checkStats(item, index){
+          if(item[index] > maximumStat){
+            console.log("Stat too high:");
+            console.log(additionalBoostStats);
+          }
+        }
+      }
+    }
+
     this.charisma = charisma;
     this.constitution = constitution;
     this.dexterity = dexterity;
@@ -523,6 +515,71 @@ function selectAbilityBoost(npcStats, primaryStat) {
   }
 
   return adjustedStats;
+}
+
+//Four free ability boosts, for last step, and every four levels
+function getBoostStats(npcClass) {
+  let charisma = 0;
+  let constitution = 0;
+  let dexterity = 0;
+  let intelligence = 0;
+  let strength = 0;
+  let wisdom = 0;
+
+  if (npcClass == "Alchemist" || npcClass == "Witch" || npcClass == "Wizard") {
+    intelligence += 2;
+    dexterity += 2;
+    constitution += 2;
+    wisdom += 2;
+  } else if (npcClass == "Bard" || npcClass == "Sorcerer") {
+    intelligence += 2;
+    charisma += 2;
+    dexterity += 2;
+    wisdom += 2;
+  } else if (
+    npcClass == "Druid" ||
+    npcClass == "Cleric" ||
+    npcClass == "Oracle"
+  ) {
+    intelligence += 2;
+    charisma += 2;
+    strength += 2;
+    wisdom += 2;
+  } else if (
+    npcClass == "Ranger" ||
+    npcClass == "Swashbuckler" ||
+    npcClass == "Champion"
+  ) {
+    strength += 2;
+    dexterity += 2;
+    charisma += 2;
+    wisdom += 2;
+  } else if (
+    npcClass == "Monk" ||
+    npcClass == "Fighter" ||
+    npcClass == "Barbarian"
+  ) {
+    strength += 2;
+    dexterity += 2;
+    constitution += 2;
+    wisdom += 2;
+  } else if (npcClass == "Investigator" || npcClass == "Rogue") {
+    intelligence += 2;
+    dexterity += 2;
+    strength += 2;
+    wisdom += 2;
+  }
+
+  let boostStats = [
+    charisma,
+    constitution,
+    dexterity,
+    intelligence,
+    strength,
+    wisdom,
+  ];
+
+  return boostStats;
 }
 
 //Generates a random background for the npc
