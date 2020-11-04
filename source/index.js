@@ -96,6 +96,10 @@ function GenerateNpc() {
     newNpc.wisdom
   );
 
+for(let i = 0; i < newNpc.npcItems.length; i++){
+  addResultWithLine(newNpc.npcItems[i]);
+}
+
   console.log(newNpc.npcName + " generated");
 }
 
@@ -307,8 +311,8 @@ class CreateNpc {
         //this is resolved.
         let maximumStat = (18 + (Math.round(npcLevel/5) *2));
 
-        additionalBoostStats.forEach(checkStats);
-        function checkStats(item, index){
+        additionalBoostStats.forEach(CheckStats);
+        function CheckStats(item, index){
           if(item[index] > maximumStat){
             console.log("Stat too high:");
             console.log(additionalBoostStats);
@@ -327,6 +331,7 @@ class CreateNpc {
     this.npcLevel = npcLevel;
     this.npcAncestery = npcAncestery;
     this.npcName = GetNpcName();
+    this.npcItems = GetStartingItems(npcClass, npcLevel);
   }
 }
 
@@ -915,7 +920,6 @@ function GetBackground(primaryStat) {
       console.log(combinedBackground);
     }
 
-    //return [background, firstStat, secondStat];
     return combinedBackground;
   }
 }
