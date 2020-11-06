@@ -564,8 +564,26 @@ function GetTenthLevelItem(npcClass) {
 }
 
 function GetEleventhLevelItem(npcClass) {
-  let itemList = ["Bag of holding type I", "Ghost touch rune"];
-
+  let itemList = ["+2 Resilient armor",
+  "Cold iron armor, standard-grade",
+  "Silver armor, standard-grade",
+  "Bag of holding type III",
+  "Skeleton key, greater",
+  "+2 armor Potency Rune",
+  "Anarchic Rune",
+"Axiomatic Rune",
+"Holy Rune",
+"Unholy Rune",
+"Arrow-catching shield",
+"Oathbow",
+"Alchemist goggles, greater",
+"Boots of elvenkind, greater",
+"Cassock of devotion",
+"Crafter’s eyepiece, greater",
+"Doubling rings, greater",
+"Goggles of night, greater",
+"Gorget of the primal roar",
+"Ring of maniacal devices "];
   if (
     npcClass == "Wizard" ||
     npcClass == "Sorcerer" ||
@@ -575,16 +593,11 @@ function GetEleventhLevelItem(npcClass) {
     npcClass == "Bard" ||
     npcClass == "Druid"
   ) {
-    itemList.push("");
-  }
-  if (npcClass == "Druid" || npcClass == "Ranger") {
-    itemList.push("");
+    itemList.push("Wand of 5th-level spell");
+    itemList.push("Wand of continuation 4th");    
   }
   if (npcClass == "Wizard" || npcClass == "Sorcerer" || npcClass == "Witch") {
-    itemList.push("");
-  }
-  if (npcClass == "Monk") {
-    itemList.push("");
+    itemList.push("Necklace of fireballs type IV");
   }
 
   item = itemList[Math.floor(Math.random() * itemList.length + 1)];
@@ -593,7 +606,11 @@ function GetEleventhLevelItem(npcClass) {
 }
 
 function GetTwelfthLevelItem(npcClass) {
-  let itemList = ["Bag of holding type I", "Ghost touch rune"];
+  let itemList = ["Marvelous medicines, standard",
+  "Energy-resistant, greater Rune",
+  "Fortification Rune",
+  "Striking, greater Rune",
+"+2 greater Striking weapon"];
 
   if (
     npcClass == "Wizard" ||
@@ -604,16 +621,25 @@ function GetTwelfthLevelItem(npcClass) {
     npcClass == "Bard" ||
     npcClass == "Druid"
   ) {
-    itemList.push("");
+    itemList.push("Broom of flying");
+    itemList.push("Animal staff, major	Staff");
+    itemList.push("Staff of fire, major	Staff");
+    itemList.push("Staff of Healing, major	Staff");
+    itemList.push("Wand of widening 5th	Wand");
+    itemList.push("Berserker’s cloak");
+    itemList.push("Cloak of elvenkind, greater");
+    itemList.push("Ring of climbing");
+    itemList.push("Ring of swimming");
   }
   if (npcClass == "Druid" || npcClass == "Ranger") {
-    itemList.push("");
+    itemList.push("Verdant staff, greater	Staff");
   }
   if (npcClass == "Wizard" || npcClass == "Sorcerer" || npcClass == "Witch") {
-    itemList.push("");
+    itemList.push("Mentalist’s staff, major	Staff");
+    itemList.push("Wand of smoldering fireballs 5th	Wand");
   }
   if (npcClass == "Monk") {
-    itemList.push("");
+    itemList.push("+2 greater Striking handwraps of mighty blows");
   }
 
   item = itemList[Math.floor(Math.random() * itemList.length + 1)];
@@ -622,7 +648,17 @@ function GetTwelfthLevelItem(npcClass) {
 }
 
 function GetThirteenthLevelItem(npcClass) {
-  let itemList = ["Bag of holding type I", "Ghost touch rune"];
+  let itemList = ["Celestial armor",
+  "Demon armor",
+  "Mail of luck",
+  "Bag of holding type IV",
+"Wondrous figurine, marble elephant",
+"Sturdy shield, greater",
+"Dwarven thrower",
+"Flame tongue",
+"Boots of speed",
+"Eye of fortune",
+"Ring of the ram, greater"];
 
   if (
     npcClass == "Wizard" ||
@@ -633,16 +669,12 @@ function GetThirteenthLevelItem(npcClass) {
     npcClass == "Bard" ||
     npcClass == "Druid"
   ) {
-    itemList.push("");
-  }
-  if (npcClass == "Druid" || npcClass == "Ranger") {
-    itemList.push("");
+    itemList.push("Wand of 6th-level spell");
+    itemList.push("Wand of continuation 5th");
+    itemList.push("Wand of manifold missiles 5th");
   }
   if (npcClass == "Wizard" || npcClass == "Sorcerer" || npcClass == "Witch") {
-    itemList.push("");
-  }
-  if (npcClass == "Monk") {
-    itemList.push("");
+    itemList.push("Necklace of fireballs type V");
   }
 
   item = itemList[Math.floor(Math.random() * itemList.length + 1)];
@@ -651,7 +683,14 @@ function GetThirteenthLevelItem(npcClass) {
 }
 
 function GetFourteenthLevelItem(npcClass) {
-  let itemList = ["Bag of holding type I", "Ghost touch rune"];
+  let itemList = ["+2 greater Resilient armor",
+  "Horseshoes of speed, greater",
+  "Primeval mistletoe, greater",
+  "Rod of negation",
+  "Storm flash",
+  "Boots of bounding, greater",
+"Bracers of armor type II",
+"Ring of energy resistance, major "]; 
 
   if (
     npcClass == "Wizard" ||
@@ -662,16 +701,15 @@ function GetFourteenthLevelItem(npcClass) {
     npcClass == "Bard" ||
     npcClass == "Druid"
   ) {
-    itemList.push("");
-  }
-  if (npcClass == "Druid" || npcClass == "Ranger") {
-    itemList.push("");
-  }
-  if (npcClass == "Wizard" || npcClass == "Sorcerer" || npcClass == "Witch") {
-    itemList.push("");
-  }
-  if (npcClass == "Monk") {
-    itemList.push("");
+    itemList.push("Staff of abjuration, major");
+    itemList.push("Staff of conjuration, major");
+    itemList.push("Staff of divination, major");
+    itemList.push("Staff of enchantment, major");
+    itemList.push("Staff of evocation, major");
+    itemList.push("Staff of illusion, major");
+    itemList.push("Staff of necromancy, major");
+    itemList.push("Staff of transmutation, major");
+    itemList.push("Wand of widening 6th");
   }
 
   item = itemList[Math.floor(Math.random() * itemList.length + 1)];
@@ -680,7 +718,15 @@ function GetFourteenthLevelItem(npcClass) {
 }
 
 function GetFifteenthLevelItem(npcClass) {
-  let itemList = ["Bag of holding type I", "Ghost touch rune"];
+  let itemList = ["Corrosive, greater Rune",
+  "Flaming, greater Rune",
+  "Frost, greater Rune",
+  "Shock, greater Rune",
+  "Thundering, greater Rune",
+  "Cold iron buckler, high-grade",
+  "Cold iron shield, high-grade",
+"Silver buckler, high-grade",
+"Silver shield, high-grade"];  
 
   if (
     npcClass == "Wizard" ||
@@ -691,16 +737,11 @@ function GetFifteenthLevelItem(npcClass) {
     npcClass == "Bard" ||
     npcClass == "Druid"
   ) {
-    itemList.push("");
-  }
-  if (npcClass == "Druid" || npcClass == "Ranger") {
-    itemList.push("");
+    itemList.push("Wand of 7th-level spell");
+    itemList.push("Wand of continuation 6th");    
   }
   if (npcClass == "Wizard" || npcClass == "Sorcerer" || npcClass == "Witch") {
-    itemList.push("");
-  }
-  if (npcClass == "Monk") {
-    itemList.push("");
+    itemList.push("Necklace of fireballs type VI");
   }
 
   item = itemList[Math.floor(Math.random() * itemList.length + 1)];
@@ -708,7 +749,14 @@ function GetFifteenthLevelItem(npcClass) {
   return item;
 }
 function GetSixteenthLevelItem(npcClass) {
-  let itemList = ["Bag of holding type I", "Ghost touch rune"];
+  let itemList = ["+3 weapon Potency Rune",
+  "Slick, major Rune",
+  "Floating shield, greater",
+  "Sturdy shield, major",
+"+3 greater Striking weapon",
+"Cold iron weapon, high-grade",
+"Frost brand",
+"Silver weapon, high-grade"]; 
 
   if (
     npcClass == "Wizard" ||
@@ -719,16 +767,13 @@ function GetSixteenthLevelItem(npcClass) {
     npcClass == "Bard" ||
     npcClass == "Druid"
   ) {
-    itemList.push("");
+    itemList.push("Wand of slaying 7th");
   }
-  if (npcClass == "Druid" || npcClass == "Ranger") {
-    itemList.push("");
-  }
-  if (npcClass == "Wizard" || npcClass == "Sorcerer" || npcClass == "Witch") {
-    itemList.push("");
+  if (npcClass == "Cleric") {
+    itemList.push("Staff of Healing, true");
   }
   if (npcClass == "Monk") {
-    itemList.push("");
+    itemList.push("+3 greater Striking handwraps of mighty blows");
   }
 
   item = itemList[Math.floor(Math.random() * itemList.length + 1)];
@@ -736,7 +781,21 @@ function GetSixteenthLevelItem(npcClass) {
   return item;
 }
 function GetSeventeenthLevelItem(npcClass) {
-  let itemList = ["Bag of holding type I", "Ghost touch rune"];
+  let itemList = ["Anklets of alacrity",
+  "Belt of giant strength",
+  "Belt of regeneration",
+  "Circlet of persuasion",
+  "Diadem of intellect",
+  "Headband of inspired wisdom",
+  "Shadow, major Rune",
+  "Flame tongue, greater",
+  "Alchemist goggles, major",
+  "Armbands of athleticism, greater",
+  "Cloak of the bat, greater",
+  "Daredevil boots, greater",
+  "Dread blindfold",
+  "Messenger’s ring, greater",
+  "Phylactery of faithfulness, greater "];  
 
   if (
     npcClass == "Wizard" ||
@@ -747,16 +806,13 @@ function GetSeventeenthLevelItem(npcClass) {
     npcClass == "Bard" ||
     npcClass == "Druid"
   ) {
-    itemList.push("");
+    itemList.push("Wand of 8th-level spell");
+    itemList.push("Wand of continuation 7th");
+    itemList.push("Wand of manifold missiles 7th");    
   }
-  if (npcClass == "Druid" || npcClass == "Ranger") {
-    itemList.push("");
-  }
-  if (npcClass == "Wizard" || npcClass == "Sorcerer" || npcClass == "Witch") {
-    itemList.push("");
-  }
-  if (npcClass == "Monk") {
-    itemList.push("");
+  if (npcClass == "Wizard" || npcClass == "Sorcerer" || npcClass == "Witch")  {
+    itemList.push("Wand of manifold missiles 7th");
+    itemList.push("Necklace of fireballs type VII");
   }
 
   item = itemList[Math.floor(Math.random() * itemList.length + 1)];
@@ -792,7 +848,18 @@ function GetEighteenthLevelItem(npcClass) {
   return item;
 }
 function GetNineteenthLevelItem(npcClass) {
-  let itemList = ["Bag of holding type I", "Ghost touch rune"];
+  let itemList = ["+3 greater Resilient armor",
+  "Breastplate of command, greater",
+  "Cold iron armor, high-grade",
+  "Silver armor, high-grade",
+  "Maestro’s instrument, greater",
+  "Marvelous medicines, greater",
+  "+3 armor Potency Rune",
+  "Fortification, greater Rune",
+  "Storm flash, greater",
+  "Goggles of night, major",
+  "Inexplicable apparatus",
+  "Ring of maniacal devices, greater"];
 
   if (
     npcClass == "Wizard" ||
@@ -803,16 +870,12 @@ function GetNineteenthLevelItem(npcClass) {
     npcClass == "Bard" ||
     npcClass == "Druid"
   ) {
-    itemList.push("");
+    itemList.push("Wand of slaying 8th");
+    itemList.push("Wand of widening 8th"); 
+    itemList.push("Possibility tome"); 
   }
-  if (npcClass == "Druid" || npcClass == "Ranger") {
-    itemList.push("");
-  }
-  if (npcClass == "Wizard" || npcClass == "Sorcerer" || npcClass == "Witch") {
-    itemList.push("");
-  }
-  if (npcClass == "Monk") {
-    itemList.push("");
+  if (npcClass == "Cleric") {
+    itemList.push("Thurible of revelation, greater");
   }
 
   item = itemList[Math.floor(Math.random() * itemList.length + 1)];
@@ -820,7 +883,9 @@ function GetNineteenthLevelItem(npcClass) {
   return item;
 }
 function GetTwentiethLevelItem(npcClass) {
-  let itemList = ["Bag of holding type I", "Ghost touch rune"];
+  let itemList = ["+3 major Resilient armor",
+  "Resilient, major Rune",
+  "Bracers of armor type III"];
 
   if (
     npcClass == "Wizard" ||
@@ -833,14 +898,10 @@ function GetTwentiethLevelItem(npcClass) {
   ) {
     itemList.push("");
   }
-  if (npcClass == "Druid" || npcClass == "Ranger") {
-    itemList.push("");
-  }
   if (npcClass == "Wizard" || npcClass == "Sorcerer" || npcClass == "Witch") {
-    itemList.push("");
-  }
-  if (npcClass == "Monk") {
-    itemList.push("");
+    itemList.push("Wand of slaying 9th");
+    itemList.push("Wand of smoldering fireballs 9th");
+    itemList.push("Wand of widening 9th");
   }
 
   item = itemList[Math.floor(Math.random() * itemList.length + 1)];

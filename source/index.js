@@ -331,6 +331,7 @@ class CreateNpc {
     this.npcLevel = npcLevel;
     this.npcAncestery = npcAncestery;
     this.npcName = GetNpcName();
+    //Some clean up needs to be done here. Weird spacing when some items are returned.
     this.npcItems = GetStartingItems(npcClass, npcLevel);
   }
 }
