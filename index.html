@@ -1,46 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pathfinder 2 NPC Generator</title>    
-    <link rel="stylesheet" href="/styles/styles.css">
-</head>
-<body>    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pathfinder 2 NPC Generator</title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
+  <body>
     <div class="top">
-        <label id="topDescription">Pathfinder 2 NPC Generator</label>
+      <label id="topDescription">Pathfinder 2 NPC Generator</label>
     </div>
     <div class="main">
-        <div class="left">
-            <div class="npcAncestery">
-                <label id="lblNpcAncestery">NPC Ancestery:</label>
-                <select id="selectNpcAncestery">
-                    <option>Random</option>
-                </select>                
-            </div>
-            <div class="npcType">
-                <label id="lblNpcType">NPC Type:</label>
-                <select id="selectNpcType">
-                    <option>Random</option>
-                </select>
-            </div>
-            <div class="npcLevel">
-                <label id="lblNpcLevel">NPC Level:</label>
-                <select id="selectNpcLevel">
-                    <option>Random</option>
-                </select>                
-            </div>
-            <div class="buttonsArea">
-                <button id="btnGenerateNpc">Generate NPC</button>
-                <button id="btnResetSelections">Reset Selections</button>
-                <button id="btnClearResults">Clear Results</button>
-            </div>            
+      <div class="left">
+        <div class="npcAncestery">
+          <label id="lblNpcAncestery">NPC Ancestery:</label>
+          <select id="selectNpcAncestery">
+            <option>Random</option>
+          </select>
         </div>
-        <div class="right">
-            <textarea id="textareaResults" rows="30" cols="60"></textarea>
+        <div class="npcType">
+          <label id="lblNpcType">NPC Type:</label>
+          <select id="selectNpcType">
+            <option>Random</option>
+          </select>
         </div>
-    </div>
+        <div class="npcLevel">
+          <label id="lblNpcLevel">NPC Level:</label>
+          <select id="selectNpcLevel">
+            <option>Random</option>
+          </select>
+        </div>
+        <div class="buttonsArea">
+          <button id="btnGenerateNpc">Generate NPC</button>
+          <button id="btnResetSelections">Reset Selections</button>
+          <button id="btnClearResults">Clear Results</button>
+        </div>
+        <div class="bottomLeft">
+          <div class="displaySavedNpc">     
+            <div class="savedNpcTextArea">              
+              <textarea id="textareaSavedNpcs" rows="21" cols="30"></textarea>              
+            </div>
+              <div class="saveNpcDisplay">
+                <div class="saveNpcDisplayControls">
+                  <div class="savedDeleteButton">
+                    <button id="btnDeleteSelectedNpc">Delete Selected Npc</button>
+                  </div>
+                  <div class="savedLabel">
+                    <label id="savedNpcLabel"> Saved NPCs:</label>  
+                  </div>
+              </div>
+                <div class="npcSavedList">
+                  <ul id="npcList">
+                  </ul>       
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="center">
+        <div class="displayGeneratedNpc">
+          <textarea id="textareaGeneratedNpcs" rows="30" cols="40"></textarea>
+        </div>
+      </div>
+      <div class="right">
+      </div>
+
+    </div>    
+
     <script src="/source/index.js"></script>
     <script src="/source/equipment.js"></script>
-</body>
+    <script src="/source/saveNpc.js"></script>
+  </body>
 </html>

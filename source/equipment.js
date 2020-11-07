@@ -10,86 +10,89 @@ function GetWealthByLevel(npcClass, npcLevel) {
   let itemsByLevel = [];
   //I didn't think this needed the numbers to be in quotes, but
   //is not consistently recognizing them otherwise
-  switch (npcLevel) {
-    case '1':
+
+level = parseInt(npcLevel);
+
+  switch (level) {
+    case 1:
       gold = 15;
       break;
-    case '2':
+    case 2:
       gold = 20;
       itemsByLevel.push(GetItemsByLevel(npcClass, 1));
       break;
-    case '3':
+    case 3:
       gold = 25;
       itemsByLevel.push(GetItemsByLevel(npcClass, 1, 2));
       itemsByLevel.push(GetItemsByLevel(npcClass, 2, 1));
       break;
-    case '4':
+    case 4:
       gold = 30;
       itemsByLevel.push(GetItemsByLevel(npcClass, npcLevel - 1, 1));
       itemsByLevel.push(GetItemsByLevel(npcClass, npcLevel - 2, 2));
       itemsByLevel.push(GetItemsByLevel(npcClass, npcLevel - 3, 1));
       break;
-    case '5':
+    case 5:
       gold = 50;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '6':
+    case 6:
       gold = 80;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '7':
+    case 7:
       gold = 125;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '8':
+    case 8:
       gold = 180;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '9':
+    case 9:
       gold = 250;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '10':
+    case 10:
       gold = 350;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '11':
+    case 11:
       gold = 500;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '12':
+    case 12:
       gold = 700;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '13':
+    case 13:
       gold = 1000;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '14':
+    case 14:
       gold = 1500;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '15':
+    case 15:
       gold = 2250;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '16':
+    case 16:
       gold = 3250;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '17':
+    case 17:
       gold = 5000;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '18':
+    case 18:
       gold = 7500;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '19':
+    case 19:
       gold = 12000;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;
-    case '20':
+    case 20:
       gold = 20000;
       itemsByLevel = GetItems(npcClass, npcLevel);
       break;

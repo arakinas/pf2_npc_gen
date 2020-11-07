@@ -38,7 +38,8 @@ let ancesteryTypes = [
 let npcAncesterySelector = document.getElementById("selectNpcAncestery");
 let npcLevelSelector = document.getElementById("selectNpcLevel");
 let npcTypeSelector = document.getElementById("selectNpcType");
-let testResultsList = document.getElementById("textareaResults");
+let textareaGeneratedNpcs = document.getElementById("textareaGeneratedNpcs");
+let savedNpcs = []; // Variable to hold saving the npcs
 
 function PopulateOptions(optionsToPopulate, control) {
   for (let i = 0; i < optionsToPopulate.length; i++) {
@@ -66,7 +67,7 @@ function GenerateLevels() {
 }
 
 function ClearResults() {
-  testResultsList.value = "";
+  textareaGeneratedNpcs.value = "";
 }
 
 function GenerateNpc() {
@@ -74,6 +75,8 @@ function GenerateNpc() {
   let npcLevel = npcLevelSelector.value;
   let npcAncestery = npcAncesterySelector.value;
   let newNpc = new CreateNpc(npcClass, npcLevel, npcAncestery);
+
+  savedNpcs.push(newNpc);
 
   addResultWithLine("Creating New Npc:");
   addResultWithLine(
@@ -96,10 +99,13 @@ function GenerateNpc() {
     newNpc.wisdom
   );
 
-for(let i = 0; i < newNpc.npcItems.length; i++){
-  addResultWithLine(newNpc.npcItems[i]);
-}
+  for (let i = 0; i < newNpc.npcItems.length; i++) {
+    let item = newNpc.npcItems[i];
+    if(i > 0){ item = " " + item;}
+    addResultWithLine(newNpc.npcItems[i]);
+  }
 
+  DisplaySavedNpc(newNpc);
   console.log(newNpc.npcName + " generated");
 }
 
@@ -122,7 +128,10 @@ document
 document.onload = PopulateDropDowns();
 
 function addResultWithLine(textToAdd) {
-  testResultsList.value += textToAdd + "\n";
+  if (textareaGeneratedNpcs.value == undefined) {
+    textareaGeneratedNpcs.value = "";
+  }
+  textareaGeneratedNpcs.value += textToAdd + "\n";
 }
 
 //Test Method
@@ -309,11 +318,11 @@ class CreateNpc {
         //but could not reproduce. Re-ran in Cypress multiple times and
         //did not see it happen again. leaving for now, until i determine whether
         //this is resolved.
-        let maximumStat = (18 + (Math.round(npcLevel/5) *2));
+        let maximumStat = 18 + Math.round(npcLevel / 5) * 2;
 
         additionalBoostStats.forEach(CheckStats);
-        function CheckStats(item, index){
-          if(item[index] > maximumStat){
+        function CheckStats(item, index) {
+          if (item[index] > maximumStat) {
             console.log("Stat too high:");
             console.log(additionalBoostStats);
           }

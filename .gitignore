@@ -1,0 +1,15 @@
+cypress/screenshots/characterGeneratorTests.js/Character Generator Tests -- Alchemist option generates an alchemist (failed).png
+cypress/screenshots/characterGeneratorTests.js/Character Generator Tests -- Barbarian option generates a Barbarian (failed).png
+cypress/screenshots/characterGeneratorTests.js/Character Generator Tests -- Default options generates a character (failed).png
+cypress/screenshots/characterGeneratorTests.js/Character Generator Tests -- Level 1 human druid has 18 wisdom (failed).png
+cypress/screenshots/characterGeneratorTests.js/Character Generator Tests -- Level 1 human fighter has 18 strength (failed).png
+cypress/screenshots/characterGeneratorTests.js/Character Generator Tests -- Level 1 human wizard has 18 intelligence (failed).png
+cypress/screenshots/characterGeneratorTests.js/Character Generator Tests -- Level 1 leshy wizard has 16 intelligence (failed).png
+cypress/screenshots/characterGeneratorTests.js/Character Generator Tests -- Level 1 ratfolk fighter has 16 strength (failed).png
+cypress/screenshots/characterGeneratorTests.js/Character Generator Tests -- Level 2 human cleric generates level 2 human cleric (failed).png
+cypress/screenshots/characterGeneratorTests.js/Character Generator Tests -- Level 5 ratfolk fighter has 18 strength (failed).png
+cypress/screenshots/characterGeneratorTests.js/Character Generator Tests -- Level 10 ratfolk fighter has 20 strength (failed).png
+cypress/videos/characterGeneratorTests.js.mp4
+cypress/videos/dropdownPopulatesTests.js.mp4
+cypress/videos/characterGeneratorTests.js.mp4
+cypress/videos/dropdownPopulatesTests.js.mp4

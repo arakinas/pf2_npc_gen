@@ -3,13 +3,24 @@ display: flex;
 }
 
 .left{
-    flex: 20%;
+    flex: 30%;
     padding-top: 3px;
+    border: 1px;
+    border-style: solid;
 }
-.right{
-    flex: 80%;
+.center{
+    flex: 40%;
     padding-top: 3px;
     border: 2px;
+}
+/* .right{
+    flex: 30%;
+    padding-top: 3px;
+    border: 2px;
+} */
+.displayGeneratedNpc{    
+    margin: 5px;
+    border-width: 1px;
 }
 .npcType{
     padding-top: 3px;
@@ -20,6 +31,31 @@ display: flex;
     border: 2px;
 }
 .buttonsArea{
-    padding-top: 3px;
-    border: 2px;
+    margin: 5px;
+    border: 1px;
 }
+
+.displaySavedNpc{
+    display: flex;
+    margin: 5px;
+    border-style: solid;
+    border-width: 1px;
+}
+.selectedNpc{
+    background: lightgray;
+}
+.saveNpcDisplayControls{
+    display:flex;
+    margin-left: 8px;
+    flex-direction: row;
+}
+.savedDeleteButton{
+    margin-left: 8px;
+    min-width: 100px;
+}
+.savedLabel{
+    margin: 8px;    
+    min-width: 100px;
+}
+
+
