@@ -1,13 +1,6 @@
 let savedNpcList = document.getElementById("npcList");
 let displayNpcTextArea = document.getElementById("textareaSavedNpcs");
 
-function DisplaySavedNpc(npc) {
-  let listItem = document.createElement("li");
-  listItem.appendChild(document.createTextNode(FormatCharacterText(npc)));
-  savedNpcList.appendChild(listItem);
-}
-
-
 document
   .getElementById("btnDeleteSelectedNpc")
   .addEventListener("click", DeleteSelectedNpc);
@@ -28,6 +21,12 @@ document.getElementById("npcList").addEventListener("click", function (e) {
     DisplayNpc();
   }
 });
+
+function DeleteSelectedNpc() {
+  let selectedCharacter = document.getElementsByClassName("selectedNpc")[0];
+  selectedCharacter.parentNode.removeChild(selectedCharacter);
+  displayNpcTextArea.value = "";
+}
 
 function DisplayNpc() {
   let selectedCharacter = document.getElementsByClassName("selectedNpc")[0]
@@ -53,16 +52,22 @@ function DisplayNpc() {
       displayNpcTextArea.value += "Wisdom:" + savedNpcs[i].wisdom + "\n";
       displayNpcTextArea.value += "Charisma:" + savedNpcs[i].charisma + "\n";
 
-let itemList = savedNpcs[i].npcItems;
+      let itemList = savedNpcs[i].npcItems;
 
       displayNpcTextArea.value += "Items:" + "\n";
-      for(let item = 0; item < itemList.length; item++){
+      for (let item = 0; item < itemList.length; item++) {
         displayNpcTextArea.value += savedNpcs[i].npcItems[item] + "\n";
       }
 
       return;
     }
   }
+}
+
+function DisplaySavedNpc(npc) {
+  let listItem = document.createElement("li");
+  listItem.appendChild(document.createTextNode(FormatCharacterText(npc)));
+  savedNpcList.appendChild(listItem);
 }
 
 function FormatCharacterText(npc) {
@@ -76,11 +81,4 @@ function FormatCharacterText(npc) {
     npc.npcClass;
 
   return npcText;
-}
-
-
-function DeleteSelectedNpc(){
-    let selectedCharacter = document.getElementsByClassName("selectedNpc")[0];
-    selectedCharacter.parentNode.removeChild(selectedCharacter);
-    displayNpcTextArea.value= "";
 }

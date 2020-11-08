@@ -1,6 +1,89 @@
+function GetItem(npcClass, itemLevel) {
+  let item;
+
+  switch (itemLevel) {
+    case 1:
+      item = GetFirstLevelItem(npcClass);
+      break;
+    case 2:
+      item = GetSecondLevelItem(npcClass);
+      break;
+    case 3:
+      item = GetThirdLevelItem(npcClass);
+      break;
+    case 4:
+      item = GetFourthLevelItem(npcClass);
+      break;
+    case 5:
+      item = GetFifthLevelItem(npcClass);
+      break;
+    case 6:
+      item = GetSixthLevelItem(npcClass);
+      break;
+    case 7:
+      item = GetSeventhLevelItem(npcClass);
+      break;
+    case 8:
+      item = GetEighthLevelItem(npcClass);
+      break;
+    case 9:
+      item = GetNinthLevelItem(npcClass);
+      break;
+    case 10:
+      item = GetTenthLevelItem(npcClass);
+      break;
+    case 11:
+      item = GetEleventhLevelItem(npcClass);
+      break;
+    case 12:
+      item = GetTwelfthLevelItem(npcClass);
+      break;
+    case 13:
+      item = GetThirteenthLevelItem(npcClass);
+      break;
+    case 14:
+      item = GetFourteenthLevelItem(npcClass);
+      break;
+    case 15:
+      item = GetFifteenthLevelItem(npcClass);
+      break;
+    case 16:
+      item = GetSixteenthLevelItem(npcClass);
+      break;
+    case 17:
+      item = GetSeventeenthLevelItem(npcClass);
+      break;
+    case 18:
+      item = GetEighteenthLevelItem(npcClass);
+      break;
+    case 19:
+      item = GetNineteenthLevelItem(npcClass);
+      break;
+    case 20:
+      item = GetTwentiethLevelItem(npcClass);
+      break;
+  }
+  return item;
+}
+
+function GetItems(npcClass, npcLevel) {
+  let items = [];
+  items.push(GetItemsByLevel(npcClass, npcLevel - 1, 1));
+  items.push(GetItemsByLevel(npcClass, npcLevel - 2, 2));
+  items.push(GetItemsByLevel(npcClass, npcLevel - 3, 1));
+  items.push(GetItemsByLevel(npcClass, npcLevel - 4, 2));
+  return items;
+}
+
+function GetItemsByLevel(npcClass, itemLevel, numItems) {
+  for (let i = 0; i < numItems; i++) {
+    return GetItem(npcClass, itemLevel);
+  }
+}
+
 function GetStartingItems(npcClass, npcLevel) {
   let npcWealthByLevel = GetWealthByLevel(npcClass, npcLevel);
-  
+
   let npcItems = [npcWealthByLevel];
   return npcItems;
 }
@@ -11,7 +94,7 @@ function GetWealthByLevel(npcClass, npcLevel) {
   //I didn't think this needed the numbers to be in quotes, but
   //is not consistently recognizing them otherwise
 
-level = parseInt(npcLevel);
+  level = parseInt(npcLevel);
 
   switch (level) {
     case 1:
@@ -98,7 +181,7 @@ level = parseInt(npcLevel);
       break;
   }
 
-  let items = [(gold + " gold")];
+  let items = [gold + " gold"];
   itemsByLevel.forEach(AddItems);
 
   function AddItems(item, index) {
@@ -108,89 +191,7 @@ level = parseInt(npcLevel);
   return items;
 }
 
-function GetItems(npcClass, npcLevel) {
-  let items = [];
-  items.push(GetItemsByLevel(npcClass, npcLevel - 1, 1));
-  items.push(GetItemsByLevel(npcClass, npcLevel - 2, 2));
-  items.push(GetItemsByLevel(npcClass, npcLevel - 3, 1));
-  items.push(GetItemsByLevel(npcClass, npcLevel - 4, 2));
-  return items;
-}
-
-function GetItemsByLevel(npcClass, itemLevel, numItems) {
-  for (let i = 0; i < numItems; i++) {
-    return GetItem(npcClass, itemLevel);
-  }
-}
-
-function GetItem(npcClass, itemLevel) {
-  let item;
-
-  switch (itemLevel) {
-    case 1:
-      item = GetFirstLevelItem(npcClass);
-      break;
-    case 2:
-      item = GetSecondLevelItem(npcClass);
-      break;
-    case 3:
-      item = GetThirdLevelItem(npcClass);
-      break;
-    case 4:
-      item = GetFourthLevelItem(npcClass);
-      break;
-    case 5:
-      item = GetFifthLevelItem(npcClass);
-      break;
-    case 6:
-      item = GetSixthLevelItem(npcClass);
-      break;
-    case 7:
-      item = GetSeventhLevelItem(npcClass);
-      break;
-    case 8:
-      item = GetEighthLevelItem(npcClass);
-      break;
-    case 9:
-      item = GetNinthLevelItem(npcClass);
-      break;
-    case 10:
-      item = GetTenthLevelItem(npcClass);
-      break;
-    case 11:
-      item = GetEleventhLevelItem(npcClass);
-      break;
-    case 12:
-      item = GetTwelfthLevelItem(npcClass);
-      break;
-    case 13:
-      item = GetThirteenthLevelItem(npcClass);
-      break;
-    case 14:
-      item = GetFourteenthLevelItem(npcClass);
-      break;
-    case 15:
-      item = GetFifteenthLevelItem(npcClass);
-      break;
-    case 16:
-      item = GetSixteenthLevelItem(npcClass);
-      break;
-    case 17:
-      item = GetSeventeenthLevelItem(npcClass);
-      break;
-    case 18:
-      item = GetEighteenthLevelItem(npcClass);
-      break;
-    case 19:
-      item = GetNineteenthLevelItem(npcClass);
-      break;
-    case 20:
-      item = GetTwentiethLevelItem(npcClass);
-      break;
-  }
-  return item;
-}
-
+// Not alphabatizing these methods due to length and organization by level
 function GetFirstLevelItem(npcClass) {
   if (npcClass == "Fighter" || npcClass == "Champion") {
     return "Half plate";
@@ -281,7 +282,8 @@ function GetFourthLevelItem(npcClass) {
     npcClass == "Witch" ||
     npcClass == "Cleric" ||
     npcClass == "Oracle" ||
-    (npcClass == "Bard")||(npcClass == "Druid")
+    npcClass == "Bard" ||
+    npcClass == "Druid"
   ) {
     itemList.push("Wand of widening 1st");
   }
@@ -322,7 +324,8 @@ function GetFifthLevelItem(npcClass) {
     npcClass == "Witch" ||
     npcClass == "Cleric" ||
     npcClass == "Oracle" ||
-    (npcClass == "Bard")||(npcClass == "Druid")
+    npcClass == "Bard" ||
+    npcClass == "Druid"
   ) {
     itemList.push("Wand of 2nd-level spell");
     itemList.push("Wand of continuation 1st");
@@ -360,7 +363,8 @@ function GetSixthLevelItem(npcClass) {
     npcClass == "Witch" ||
     npcClass == "Cleric" ||
     npcClass == "Oracle" ||
-    (npcClass == "Bard")||(npcClass == "Druid")
+    npcClass == "Bard" ||
+    npcClass == "Druid"
   ) {
     itemList.push("Staff of conjuration");
     itemList.push("Staff of divination");
@@ -567,26 +571,28 @@ function GetTenthLevelItem(npcClass) {
 }
 
 function GetEleventhLevelItem(npcClass) {
-  let itemList = ["+2 Resilient armor",
-  "Cold iron armor, standard-grade",
-  "Silver armor, standard-grade",
-  "Bag of holding type III",
-  "Skeleton key, greater",
-  "+2 armor Potency Rune",
-  "Anarchic Rune",
-"Axiomatic Rune",
-"Holy Rune",
-"Unholy Rune",
-"Arrow-catching shield",
-"Oathbow",
-"Alchemist goggles, greater",
-"Boots of elvenkind, greater",
-"Cassock of devotion",
-"Crafter’s eyepiece, greater",
-"Doubling rings, greater",
-"Goggles of night, greater",
-"Gorget of the primal roar",
-"Ring of maniacal devices "];
+  let itemList = [
+    "+2 Resilient armor",
+    "Cold iron armor, standard-grade",
+    "Silver armor, standard-grade",
+    "Bag of holding type III",
+    "Skeleton key, greater",
+    "+2 armor Potency Rune",
+    "Anarchic Rune",
+    "Axiomatic Rune",
+    "Holy Rune",
+    "Unholy Rune",
+    "Arrow-catching shield",
+    "Oathbow",
+    "Alchemist goggles, greater",
+    "Boots of elvenkind, greater",
+    "Cassock of devotion",
+    "Crafter’s eyepiece, greater",
+    "Doubling rings, greater",
+    "Goggles of night, greater",
+    "Gorget of the primal roar",
+    "Ring of maniacal devices ",
+  ];
   if (
     npcClass == "Wizard" ||
     npcClass == "Sorcerer" ||
@@ -597,7 +603,7 @@ function GetEleventhLevelItem(npcClass) {
     npcClass == "Druid"
   ) {
     itemList.push("Wand of 5th-level spell");
-    itemList.push("Wand of continuation 4th");    
+    itemList.push("Wand of continuation 4th");
   }
   if (npcClass == "Wizard" || npcClass == "Sorcerer" || npcClass == "Witch") {
     itemList.push("Necklace of fireballs type IV");
@@ -609,11 +615,13 @@ function GetEleventhLevelItem(npcClass) {
 }
 
 function GetTwelfthLevelItem(npcClass) {
-  let itemList = ["Marvelous medicines, standard",
-  "Energy-resistant, greater Rune",
-  "Fortification Rune",
-  "Striking, greater Rune",
-"+2 greater Striking weapon"];
+  let itemList = [
+    "Marvelous medicines, standard",
+    "Energy-resistant, greater Rune",
+    "Fortification Rune",
+    "Striking, greater Rune",
+    "+2 greater Striking weapon",
+  ];
 
   if (
     npcClass == "Wizard" ||
@@ -651,17 +659,19 @@ function GetTwelfthLevelItem(npcClass) {
 }
 
 function GetThirteenthLevelItem(npcClass) {
-  let itemList = ["Celestial armor",
-  "Demon armor",
-  "Mail of luck",
-  "Bag of holding type IV",
-"Wondrous figurine, marble elephant",
-"Sturdy shield, greater",
-"Dwarven thrower",
-"Flame tongue",
-"Boots of speed",
-"Eye of fortune",
-"Ring of the ram, greater"];
+  let itemList = [
+    "Celestial armor",
+    "Demon armor",
+    "Mail of luck",
+    "Bag of holding type IV",
+    "Wondrous figurine, marble elephant",
+    "Sturdy shield, greater",
+    "Dwarven thrower",
+    "Flame tongue",
+    "Boots of speed",
+    "Eye of fortune",
+    "Ring of the ram, greater",
+  ];
 
   if (
     npcClass == "Wizard" ||
@@ -686,14 +696,16 @@ function GetThirteenthLevelItem(npcClass) {
 }
 
 function GetFourteenthLevelItem(npcClass) {
-  let itemList = ["+2 greater Resilient armor",
-  "Horseshoes of speed, greater",
-  "Primeval mistletoe, greater",
-  "Rod of negation",
-  "Storm flash",
-  "Boots of bounding, greater",
-"Bracers of armor type II",
-"Ring of energy resistance, major "]; 
+  let itemList = [
+    "+2 greater Resilient armor",
+    "Horseshoes of speed, greater",
+    "Primeval mistletoe, greater",
+    "Rod of negation",
+    "Storm flash",
+    "Boots of bounding, greater",
+    "Bracers of armor type II",
+    "Ring of energy resistance, major ",
+  ];
 
   if (
     npcClass == "Wizard" ||
@@ -721,15 +733,17 @@ function GetFourteenthLevelItem(npcClass) {
 }
 
 function GetFifteenthLevelItem(npcClass) {
-  let itemList = ["Corrosive, greater Rune",
-  "Flaming, greater Rune",
-  "Frost, greater Rune",
-  "Shock, greater Rune",
-  "Thundering, greater Rune",
-  "Cold iron buckler, high-grade",
-  "Cold iron shield, high-grade",
-"Silver buckler, high-grade",
-"Silver shield, high-grade"];  
+  let itemList = [
+    "Corrosive, greater Rune",
+    "Flaming, greater Rune",
+    "Frost, greater Rune",
+    "Shock, greater Rune",
+    "Thundering, greater Rune",
+    "Cold iron buckler, high-grade",
+    "Cold iron shield, high-grade",
+    "Silver buckler, high-grade",
+    "Silver shield, high-grade",
+  ];
 
   if (
     npcClass == "Wizard" ||
@@ -741,7 +755,7 @@ function GetFifteenthLevelItem(npcClass) {
     npcClass == "Druid"
   ) {
     itemList.push("Wand of 7th-level spell");
-    itemList.push("Wand of continuation 6th");    
+    itemList.push("Wand of continuation 6th");
   }
   if (npcClass == "Wizard" || npcClass == "Sorcerer" || npcClass == "Witch") {
     itemList.push("Necklace of fireballs type VI");
@@ -751,15 +765,18 @@ function GetFifteenthLevelItem(npcClass) {
 
   return item;
 }
+
 function GetSixteenthLevelItem(npcClass) {
-  let itemList = ["+3 weapon Potency Rune",
-  "Slick, major Rune",
-  "Floating shield, greater",
-  "Sturdy shield, major",
-"+3 greater Striking weapon",
-"Cold iron weapon, high-grade",
-"Frost brand",
-"Silver weapon, high-grade"]; 
+  let itemList = [
+    "+3 weapon Potency Rune",
+    "Slick, major Rune",
+    "Floating shield, greater",
+    "Sturdy shield, major",
+    "+3 greater Striking weapon",
+    "Cold iron weapon, high-grade",
+    "Frost brand",
+    "Silver weapon, high-grade",
+  ];
 
   if (
     npcClass == "Wizard" ||
@@ -783,22 +800,25 @@ function GetSixteenthLevelItem(npcClass) {
 
   return item;
 }
+
 function GetSeventeenthLevelItem(npcClass) {
-  let itemList = ["Anklets of alacrity",
-  "Belt of giant strength",
-  "Belt of regeneration",
-  "Circlet of persuasion",
-  "Diadem of intellect",
-  "Headband of inspired wisdom",
-  "Shadow, major Rune",
-  "Flame tongue, greater",
-  "Alchemist goggles, major",
-  "Armbands of athleticism, greater",
-  "Cloak of the bat, greater",
-  "Daredevil boots, greater",
-  "Dread blindfold",
-  "Messenger’s ring, greater",
-  "Phylactery of faithfulness, greater "];  
+  let itemList = [
+    "Anklets of alacrity",
+    "Belt of giant strength",
+    "Belt of regeneration",
+    "Circlet of persuasion",
+    "Diadem of intellect",
+    "Headband of inspired wisdom",
+    "Shadow, major Rune",
+    "Flame tongue, greater",
+    "Alchemist goggles, major",
+    "Armbands of athleticism, greater",
+    "Cloak of the bat, greater",
+    "Daredevil boots, greater",
+    "Dread blindfold",
+    "Messenger’s ring, greater",
+    "Phylactery of faithfulness, greater ",
+  ];
 
   if (
     npcClass == "Wizard" ||
@@ -811,9 +831,9 @@ function GetSeventeenthLevelItem(npcClass) {
   ) {
     itemList.push("Wand of 8th-level spell");
     itemList.push("Wand of continuation 7th");
-    itemList.push("Wand of manifold missiles 7th");    
+    itemList.push("Wand of manifold missiles 7th");
   }
-  if (npcClass == "Wizard" || npcClass == "Sorcerer" || npcClass == "Witch")  {
+  if (npcClass == "Wizard" || npcClass == "Sorcerer" || npcClass == "Witch") {
     itemList.push("Wand of manifold missiles 7th");
     itemList.push("Necklace of fireballs type VII");
   }
@@ -822,6 +842,7 @@ function GetSeventeenthLevelItem(npcClass) {
 
   return item;
 }
+
 function GetEighteenthLevelItem(npcClass) {
   let itemList = ["Bag of holding type I", "Ghost touch rune"];
 
@@ -850,19 +871,22 @@ function GetEighteenthLevelItem(npcClass) {
 
   return item;
 }
+
 function GetNineteenthLevelItem(npcClass) {
-  let itemList = ["+3 greater Resilient armor",
-  "Breastplate of command, greater",
-  "Cold iron armor, high-grade",
-  "Silver armor, high-grade",
-  "Maestro’s instrument, greater",
-  "Marvelous medicines, greater",
-  "+3 armor Potency Rune",
-  "Fortification, greater Rune",
-  "Storm flash, greater",
-  "Goggles of night, major",
-  "Inexplicable apparatus",
-  "Ring of maniacal devices, greater"];
+  let itemList = [
+    "+3 greater Resilient armor",
+    "Breastplate of command, greater",
+    "Cold iron armor, high-grade",
+    "Silver armor, high-grade",
+    "Maestro’s instrument, greater",
+    "Marvelous medicines, greater",
+    "+3 armor Potency Rune",
+    "Fortification, greater Rune",
+    "Storm flash, greater",
+    "Goggles of night, major",
+    "Inexplicable apparatus",
+    "Ring of maniacal devices, greater",
+  ];
 
   if (
     npcClass == "Wizard" ||
@@ -874,8 +898,8 @@ function GetNineteenthLevelItem(npcClass) {
     npcClass == "Druid"
   ) {
     itemList.push("Wand of slaying 8th");
-    itemList.push("Wand of widening 8th"); 
-    itemList.push("Possibility tome"); 
+    itemList.push("Wand of widening 8th");
+    itemList.push("Possibility tome");
   }
   if (npcClass == "Cleric") {
     itemList.push("Thurible of revelation, greater");
@@ -885,10 +909,13 @@ function GetNineteenthLevelItem(npcClass) {
 
   return item;
 }
+
 function GetTwentiethLevelItem(npcClass) {
-  let itemList = ["+3 major Resilient armor",
-  "Resilient, major Rune",
-  "Bracers of armor type III"];
+  let itemList = [
+    "+3 major Resilient armor",
+    "Resilient, major Rune",
+    "Bracers of armor type III",
+  ];
 
   if (
     npcClass == "Wizard" ||
