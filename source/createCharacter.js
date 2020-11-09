@@ -26,6 +26,10 @@ class CreateNpc {
     let strength = 10;
     let wisdom = 10;
 
+//For debugging stat issue:
+let currentStats = [charisma,constitution,dexterity,intelligence,strength,wisdom];
+LogCurrentStats(currentStats, "Initial Stats");
+
     //Initializing this value, just as a precaution
     let primaryStat = "Constitution";
     if (
@@ -66,9 +70,10 @@ class CreateNpc {
     if (primaryStat == "Constitution") {
       constitution += 2;
     }
-
-    let npcBackground = GetBackground(primaryStat);
-    this.npcBackGround = npcBackground;
+    
+    //For debugging stat issue:
+currentStats = [charisma,constitution,dexterity,intelligence,strength,wisdom];
+LogCurrentStats(currentStats, "Class Boost");
 
     let npcAncesteryStats = GetAncestoryStats(npcAncestery, primaryStat);
     charisma += npcAncesteryStats[0];
@@ -76,7 +81,14 @@ class CreateNpc {
     dexterity += npcAncesteryStats[2];
     intelligence += npcAncesteryStats[3];
     strength += npcAncesteryStats[4];
-    wisdom += npcAncesteryStats[5];
+    wisdom += npcAncesteryStats[5];    
+    
+    //For debugging stat issue:
+currentStats = [charisma,constitution,dexterity,intelligence,strength,wisdom];
+LogCurrentStats(currentStats, "Ancestery Stats");
+
+let npcBackground = GetBackground(primaryStat);
+this.npcBackGround = npcBackground;
 
     if (this.npcBackGround[1] == "Charisma") {
       charisma += 2;
@@ -112,6 +124,10 @@ class CreateNpc {
       );
     }
 
+    //For debugging stat issue:
+    currentStats = [charisma,constitution,dexterity,intelligence,strength,wisdom];
+    LogCurrentStats(currentStats, "Background Stats");
+    
     //four additional boost stats
     let additionalBoostStats = GetBoostStats(npcClass);
 
@@ -123,6 +139,14 @@ class CreateNpc {
     wisdom += additionalBoostStats[5];
 
     //Check for stat total for debug purposes
+currentStats = [charisma,constitution,dexterity,intelligence,strength,wisdom];
+LogCurrentStats(currentStats, "Additional boost Stats");
+
+    if(intelligence > 18){
+      console.log("Stat too high:");
+      console.log(currentStats);
+    }
+
     if (
       strength + dexterity + constitution + intelligence + wisdom + charisma !=
       78
@@ -157,11 +181,13 @@ class CreateNpc {
         //this is resolved.
         let maximumStat = 18 + Math.round(npcLevel / 5) * 2;
 
-        additionalBoostStats.forEach(CheckStats);
+       currentStats = [charisma,constitution,dexterity,intelligence,strength,wisdom];
+
+        currentStats.forEach(CheckStats);
         function CheckStats(item, index) {
           if (item[index] > maximumStat) {
             console.log("Stat too high:");
-            console.log(additionalBoostStats);
+            console.log(currentStats);
           }
         }
       }
@@ -583,6 +609,11 @@ function GetBackground(primaryStat) {
     //This bombs out if I don't have the value assigned to an array before returning.
     let _background = [background, firstStat, secondStat];
 
+
+    if(firstStat==secondStat)
+    {
+      console.log("background stats are identical");
+    }
     return _background;
   } else {
     //Remove the first stat from the list,
@@ -595,7 +626,7 @@ function GetBackground(primaryStat) {
       "Strength",
       "Wisdom",
     ];
-    secondStatList.slice((secondStatList.indexOf(firstStat), 1));
+    secondStatList.splice((secondStatList.indexOf(firstStat), 1));
 
     secondStat =
       secondStatList[Math.floor(Math.random() * secondStatList.length)];
@@ -613,6 +644,12 @@ function GetBackground(primaryStat) {
     ) {
       console.log("error with background");
       console.log(combinedBackground);
+    }
+
+
+    if(firstStat==secondStat)
+    {
+      console.log("background stats are identical");
     }
 
     return combinedBackground;
@@ -1060,6 +1097,13 @@ function GetNpcName(ancestery) {
 
   let ranName = Math.floor(Math.random() * (nameList.length + 1));
   return nameList[ranName];
+}
+
+//logs the current stats and stage for debugging stat issues
+function LogCurrentStats(currentStats, currentStage){
+
+  console.log("Logging stats at stage: " + currentStage);
+  console.log("Current stats: " + currentStats);
 }
 
 //selects an ability to boost. Removes items already selected from the options.
