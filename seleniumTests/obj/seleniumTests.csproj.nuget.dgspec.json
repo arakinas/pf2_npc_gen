@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\DevProjects\\pf2_npc_gen\\seleniumtests\\seleniumTests.csproj": {}
+    "f:\\DevProjects\\pf2_npc_gen\\seleniumTests\\seleniumTests.csproj": {}
   },
   "projects": {
-    "F:\\DevProjects\\pf2_npc_gen\\seleniumtests\\seleniumTests.csproj": {
+    "f:\\DevProjects\\pf2_npc_gen\\seleniumTests\\seleniumTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\DevProjects\\pf2_npc_gen\\seleniumtests\\seleniumTests.csproj",
+        "projectUniqueName": "f:\\DevProjects\\pf2_npc_gen\\seleniumTests\\seleniumTests.csproj",
         "projectName": "seleniumTests",
-        "projectPath": "F:\\DevProjects\\pf2_npc_gen\\seleniumtests\\seleniumTests.csproj",
+        "projectPath": "f:\\DevProjects\\pf2_npc_gen\\seleniumTests\\seleniumTests.csproj",
         "packagesPath": "C:\\Users\\araki\\.nuget\\packages\\",
-        "outputPath": "F:\\DevProjects\\pf2_npc_gen\\seleniumtests\\obj\\",
+        "outputPath": "f:\\DevProjects\\pf2_npc_gen\\seleniumTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

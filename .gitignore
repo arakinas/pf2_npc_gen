@@ -12,6 +12,8 @@ cypress/screenshots/characterGeneratorTests.js/Character Generator Tests -- Leve
 cypress/videos/characterGeneratorTests.js.mp4
 cypress/videos/dropdownPopulatesTests.js.mp4
 cypress/videos/characterGeneratorTests.js.mp4
-cypress/videos/dropdownPopulatesTests.js.mp4
-debug.log
-debug.log
+cypress/videos/dropdownPopulatesTests.js.mp4debug.log
+seleniumTests/bin/Debug/net5.0/nunit_random_seed.tmp
+seleniumTests/bin/Debug/net5.0/seleniumTests.dll
+seleniumTests/bin/Debug/net5.0/seleniumTests.pdb
+seleniumTests/obj/project.nuget.cache
