@@ -14,7 +14,7 @@ let classTypes = [
   "Sorcerer",
   "Swashbuckler",
   "Witch",
-  "Wizard",
+  "Wizard"
 ];
 
 let ancesteryTypes = [
@@ -32,7 +32,7 @@ let ancesteryTypes = [
   "Leshy",
   "Lizardfolk",
   "Hobgoblin",
-  "Shoony",
+  "Shoony"
 ];
 
 describe("Drop Downs Populate", () => {
@@ -66,7 +66,7 @@ describe("Drop Downs Populate", () => {
     cy.get("#selectNpcLevel").select("7").should("have.value", 7);
     cy.get("#selectNpcLevel").select("8").should("have.value", 8);
   });
-  it("Npc Ancestry drop down contains ancesterys", () => {
+  it("Npc Ancestry drop down contains ancestrys", () => {
     cy.visit("/index.html");
     cy.get("#selectNpcAncestery > option").should(
       "have.length",
