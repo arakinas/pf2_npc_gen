@@ -5,4 +5,4 @@ seleniumTests/bin/Debug/
 seleniumTests/Support/CommonLogic.cs
 seleniumTests/Support/ExceptionLog.cs
 seleniumTests/Support/TestCaseException.cs
-seleniumTests/bin/Debug/net5.0/nunit_random_seed.tmp
+seleniumTests/bin/Debug/net5.0/
